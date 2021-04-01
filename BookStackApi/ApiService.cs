@@ -12,7 +12,7 @@ namespace BookStackApi {
     private readonly JsonSerializerSettings _settings;
     private readonly JsonSerializerSettings _settingsWithoutId;
     public string BaseUrl { get; }
-
+    public string LastReason { get; private set; }
     /// <summary>
     /// Create the Api service
     /// </summary>
@@ -48,6 +48,7 @@ namespace BookStackApi {
     /// <returns>Returns an object containing a list and the total count</returns>
     public async Task<BookStackResponse<T>> GetListAsync<T>() where T : class, IBookStackEntity, new()
     {
+      LastReason = null;
       using var client = new HttpClient();
       var url = getUrlForEntity(typeof(T));
       client.DefaultRequestHeaders.Add("Authorization", $"Token {_tokenId}:{_tokenSecret}");
@@ -68,11 +69,11 @@ namespace BookStackApi {
     /// <returns>Returns single entity in *Details Version</returns>
     public async Task<T> GetDetailsAsync<T>(int id) where T : class, IBookStackEntity, new()
     {
+      LastReason = null;
       using var client = new HttpClient();
       var url = getUrlForEntity(typeof(T), id);
       client.DefaultRequestHeaders.Add("Authorization", $"Token {_tokenId}:{_tokenSecret}");
       var response = await client.GetStringAsync(url);
-
       var result = JsonConvert.DeserializeObject<T>(response, _settings);
       return result;
     }
@@ -91,8 +92,11 @@ namespace BookStackApi {
       var url = getUrlForEntity(typeof(T), id);
       client.DefaultRequestHeaders.Add("Authorization", $"Token {_tokenId}:{_tokenSecret}");
       var response = await client.DeleteAsync(url);
+      LastReason = response.ReasonPhrase;
       return response.IsSuccessStatusCode;
     }
+
+
 
     public bool Delete<T>(int id) where T : class, IBookStackEntity, new() => DeleteAsync<T>(id).GetAwaiter().GetResult();
 
@@ -113,7 +117,7 @@ namespace BookStackApi {
       HttpContent httpContent = new StringContent(content, Encoding.UTF8, "application/json");
       var response = await client.PutAsync(url, httpContent);
       var success = response.IsSuccessStatusCode;
-
+      LastReason = response.ReasonPhrase;
       if (!success) return null;
 
       var stringResult = await response.Content.ReadAsStringAsync();
@@ -139,7 +143,7 @@ namespace BookStackApi {
       HttpContent httpContent = new StringContent(content, Encoding.UTF8, "application/json");
       var response = await client.PostAsync(url, httpContent);
       var success = response.IsSuccessStatusCode;
-
+      LastReason = response.ReasonPhrase;
       if (!success) return null;
       var stringResult = await response.Content.ReadAsStringAsync();
       return JsonConvert.DeserializeObject<T>(stringResult, _settings);

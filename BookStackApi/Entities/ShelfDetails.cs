@@ -9,8 +9,10 @@ namespace BookStackApi {
     public User CreatedBy { get; set; }
     public User UpdatedBy { get; set; }
     public User OwnedBy { get; set; }
+    [BookStackNoUpdate]
     public Cover Cover { get; set; }
     public Tag[] Tags { get; set; }
+    [BookStackNoUpdate]
     public BookStackEntity[] Books { get; set; }
   }
 }

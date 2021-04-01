@@ -15,4 +15,10 @@ namespace BookStackApi {
       return attribute;
     }
   }
+
+  [AttributeUsage(AttributeTargets.Property)]
+  public class BookStackNoUpdateAttribute : Attribute
+  {
+
+  }
 }
