@@ -17,6 +17,6 @@ foreach (var book in bookResponse.Data) {
 
 ## Todo
 
-The query options are still missing from the GetList and GetListAsync.
+Error handling (e.g. 427 - tomm many request) is wanted.
 
 Any contributions are welcome

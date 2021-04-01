@@ -46,11 +46,13 @@ namespace BookStackApi {
     /// </summary>
     /// <typeparam name="T">Entity type</typeparam>
     /// <returns>Returns an object containing a list and the total count</returns>
-    public async Task<BookStackResponse<T>> GetListAsync<T>() where T : class, IBookStackEntity, new()
+    public async Task<BookStackResponse<T>> GetListAsync<T>(ListParameters parameters= null) where T : class, IBookStackEntity, new()
     {
       LastReason = null;
       using var client = new HttpClient();
       var url = getUrlForEntity(typeof(T));
+      if (parameters != null)
+        url += parameters.AsQuery();
       client.DefaultRequestHeaders.Add("Authorization", $"Token {_tokenId}:{_tokenSecret}");
       var response = await client.GetStringAsync(url);
 
@@ -58,7 +60,7 @@ namespace BookStackApi {
       return result;
     }
 
-    public BookStackResponse<T> GetList<T>() where T : class, IBookStackEntity, new() => GetListAsync<T>().GetAwaiter().GetResult();
+    public BookStackResponse<T> GetList<T>(ListParameters parameters = null) where T : class, IBookStackEntity, new() => GetListAsync<T>(parameters).GetAwaiter().GetResult();
 
 
     /// <summary>
