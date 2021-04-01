@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStackApi", "BookStackApi\BookStackApi.csproj", "{E69C9D0F-DCA6-4ADC-9A6F-D7666858EFC2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStackApi", "BookStackApi\BookStackApi.csproj", "{0D0529FB-6964-4FA0-835E-63E83B4065DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E69C9D0F-DCA6-4ADC-9A6F-D7666858EFC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E69C9D0F-DCA6-4ADC-9A6F-D7666858EFC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E69C9D0F-DCA6-4ADC-9A6F-D7666858EFC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E69C9D0F-DCA6-4ADC-9A6F-D7666858EFC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D0529FB-6964-4FA0-835E-63E83B4065DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D0529FB-6964-4FA0-835E-63E83B4065DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D0529FB-6964-4FA0-835E-63E83B4065DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D0529FB-6964-4FA0-835E-63E83B4065DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
