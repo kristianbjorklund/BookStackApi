@@ -1,8 +1,24 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Version>1.0.0.1</Version>
+    <Authors>Kristian Bjørklund</Authors>
+    <Company>Datalogik</Company>
+    <Description>A C# BookStack API</Description>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Copyright>Datalogik P/S</Copyright>
+    <PackageProjectUrl>https://www.datalogik.dk</PackageProjectUrl>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="BookstackApi.1.0.0.0.nupkg" />
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
